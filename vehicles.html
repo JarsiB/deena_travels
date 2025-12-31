@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deena Travels</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+    <style>
+      :root {
+        --primary: #ff4d00;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+
+        background: #fff;
+      }
+
+      /* ================= NAVBAR ================= */
+      .navbar {
+        padding: 14px 0;
+      }
+
+      .navbar-brand {
+        font-weight: 800;
+        font-size: 1.6rem;
+      }
+
+      .navbar-brand span {
+        color: var(--primary);
+      }
+
+      .nav-link {
+        font-weight: 500;
+        color: #000 !important;
+        margin: 0 10px;
+      }
+
+      .nav-link.active {
+        color: var(--primary) !important;
+      }
+
+      .book-btn {
+        background: var(--primary);
+        color: #fff;
+        padding: 10px 22px;
+        border-radius: 30px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      /* Fix toggler visibility */
+      .navbar-toggler {
+        border: none;
+      }
+      .navbar-toggler-icon {
+        filter: invert(1);
+      }
+
+      /* ================= HERO ================= */
+      .hero-wrap {
+        padding: 15px; /* 🔥 reduced top space */
+      }
+
+      .hero {
+        position: relative;
+        border-radius: 40px;
+        overflow: hidden;
+      }
+
+      .hero img {
+        width: 100%;
+        height: 65vh; /* ✅ changed */
+        object-fit: cover;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        z-index: 1;
+      }
+
+      .hero-content {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero h1 {
+        font-size: clamp(2rem, 4vw, 4rem);
+        font-weight: 800;
+        color: #fff;
+      }
+
+      .hero p {
+        color: #ddd;
+        max-width: 650px;
+      }
+
+      .hero small {
+        color: var(--primary);
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+
+      /* ================= BUTTONS ================= */
+      .hero-btn-primary {
+        background: var(--primary);
+        color: #fff;
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-weight: 600;
+        border: none;
+      }
+
+      .hero-btn-outline {
+        background: #fff;
+        color: #000;
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-weight: 600;
+        border: none;
+      }
+
+      @media (max-width: 991px) {
+        .hero img {
+          height: 65vh; /* keep same */
+        }
+        .hero-content {
+          text-align: center;
+        }
+        .hero p {
+          margin: auto;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero {
+          border-radius: 25px;
+        }
+        .hero img {
+          height: 65vh; /* keep same */
+        }
+      }
+      /* ================= ALT FEATURE UI ================= */
+      .feature-alt {
+        padding: 100px 0;
+        background: #f8fafc;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .feature-alt-header h2 {
+        font-size: 36px;
+        font-weight: 800;
+      }
+
+      .feature-alt-header h2 span {
+        color: #ff4d00;
+      }
+
+      .feature-alt-header p {
+        max-width: 620px;
+        margin: 10px auto 0;
+        color: #666;
+      }
+
+      /* CARD */
+      .feature-alt-card {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(8px);
+        border-radius: 22px;
+        padding: 35px 30px;
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        position: relative;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        transition: 0.35s ease;
+      }
+
+      /* NUMBER */
+      .feature-count {
+        position: absolute;
+        top: -14px;
+        right: 20px;
+        background: #ff4d00;
+        color: #fff;
+        font-weight: 700;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+      }
+
+      /* ICON */
+      .feature-alt-icon {
+        min-width: 64px;
+        height: 64px;
+        background: rgba(255, 77, 0, 0.15);
+        color: #ff4d00;
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+      }
+
+      /* CONTENT */
+      .feature-alt-content h5 {
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .feature-alt-content p {
+        font-size: 14px;
+        color: #555;
+        line-height: 1.7;
+      }
+
+      /* HOVER */
+      .feature-alt-card:hover {
+        box-shadow: 0 30px 70px rgba(255, 77, 0, 0.18);
+        transform: translateY(-6px);
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 576px) {
+        .feature-alt-header h2 {
+          font-size: 28px;
+        }
+
+        .feature-alt-card {
+          padding: 28px 22px;
+        }
+      }
+      /* ================= CTA SECTION ================= */
+      .cta-section {
+        padding: 80px 0;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .cta-box {
+        background: #000;
+        border-radius: 40px;
+        padding: 70px 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* GRID BACKGROUND */
+      .cta-box::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(
+            rgba(255, 255, 255, 0.05) 1px,
+            transparent 1px
+          ),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        background-size: 40px 40px;
+        z-index: 0;
+      }
+
+      /* CONTENT */
+      .cta-content {
+        max-width: 520px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-content h2 {
+        font-size: clamp(2rem, 3.5vw, 3rem);
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 20px;
+      }
+
+      .cta-content p {
+        color: #ccc;
+        margin-bottom: 30px;
+        line-height: 1.7;
+      }
+
+      /* BUTTON */
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: #ff4d00;
+        color: #fff;
+        padding: 14px 32px;
+        border-radius: 30px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: 0.3s ease;
+      }
+
+      .cta-btn span {
+        width: 36px;
+        height: 36px;
+        background: #fff;
+        color: #ff4d00;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .cta-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(255, 77, 0, 0.4);
+      }
+
+      /* IMAGE */
+      .cta-image {
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-image img {
+        max-width: 480px;
+        width: 100%;
+        filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.6));
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 992px) {
+        .cta-box {
+          flex-direction: column;
+          text-align: center;
+          padding: 60px 30px;
+        }
+
+        .cta-content {
+          max-width: 100%;
+        }
+
+        .cta-image img {
+          margin-top: 40px;
+          max-width: 380px;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .cta-box {
+          border-radius: 25px;
+        }
+      }
+      /* ================= VEHICLE BENEFITS ALT UI ================= */
+.vehicle-benefits-alt {
+  padding: 130px 0;
+  background: #ffffff;
+}
+
+.vehicle-benefits-alt .section-header h2 {
+  font-size: 38px;
+  font-weight: 800;
+}
+
+.vehicle-benefits-alt .section-header span {
+  color: #ff4d00;
+}
+
+.vehicle-benefits-alt .section-header p {
+  max-width: 650px;
+  margin: 12px auto 0;
+  color: #666;
+}
+
+/* ROW STYLE */
+.benefit-row {
+  display: flex;
+  gap: 25px;
+  height: 100%;
+}
+
+/* ORANGE LINE */
+.benefit-line {
+  width: 4px;
+  background: linear-gradient(180deg, #ff4d00, #ff7a3d);
+  border-radius: 10px;
+}
+
+/* CONTENT */
+.benefit-row-content {
+  padding: 25px 0;
+}
+
+.benefit-row-content i {
+  font-size: 34px;
+  color: #ff4d00;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.benefit-row-content h5 {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.benefit-row-content p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.7;
+}
+
+/* HOVER EFFECT (SUBTLE) */
+.benefit-row:hover .benefit-row-content i {
+  transform: translateX(6px);
+  transition: 0.3s ease;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .benefit-row {
+    gap: 18px;
+  }
+
+  .vehicle-benefits-alt {
+    padding: 90px 0;
+  }
+}
+
+/*  */
+/* ================= VEHICLE USAGE IMAGE OVERLAY ================= */
+.vehicle-usage-overlay {
+  padding: 110px 0;
+  background: #fff;
+}
+
+.vehicle-usage-overlay .section-header h2 {
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.vehicle-usage-overlay .section-header span {
+  color: #ff4d00;
+}
+
+.vehicle-usage-overlay .section-header p {
+  max-width: 620px;
+  margin: 12px auto 0;
+  color: #666;
+}
+
+/* CARD */
+.usage-overlay-card {
+  position: relative;
+  height: 320px;
+  border-radius: 26px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* IMAGE */
+.usage-overlay-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+/* DARK OVERLAY */
+.usage-overlay-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.65),
+    rgba(0,0,0,0.25)
+  );
+  z-index: 1;
+}
+
+/* CONTENT */
+.usage-overlay-content {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  right: 25px;
+  z-index: 2;
+  color: #fff;
+}
+
+.usage-overlay-content h5 {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.usage-overlay-content p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+/* HOVER EFFECT */
+.usage-overlay-card:hover img {
+  transform: scale(1.08);
+}
+
+/* RESPONSIVE */
+@media (max-width: 576px) {
+  .usage-overlay-card {
+    height: 280px;
+  }
+}
+
+.vehicle-usage-overlay .container {
+  max-width: 100%;
+  padding-left: 40px;   /* 🔽 reduce left gap */
+  padding-right: 40px;  /* 🔽 reduce right gap */
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .vehicle-usage-overlay .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+    </style>
+  </head>
+
+  <body>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+      AOS.init({
+        duration: 1200, // slower animation
+        easing: "ease-in-out", // smooth easing
+        once: true, // animate only once
+        offset: 120, // start a bit earlier
+        delay: 100, // slight delay for smoothness
+      });
+    </script>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="#" data-aos="zoom-in"
+          ><span>DEENA</span>TRAVELS</a
+        >
+
+        <button
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html" data-aos="zoom-in">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html" data-aos="zoom-in"
+                >About Us</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="services.html" data-aos="zoom-in"
+                >Services</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="vehicles.html" data-aos="zoom-in"
+                >Vehicles</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="enquiry.html" data-aos="zoom-in">Enquiry</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html" data-aos="zoom-in">Contact Us</a>
+            </li>
+          </ul>
+
+          <a
+            href="enquiry.html"
+            class="book-btn d-none d-lg-inline-block"
+            data-aos="zoom-in"
+            >Book Your Ride</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero-wrap" style="margin-top: 80px">
+      <div class="hero">
+        <img
+          src="https://wallpapercave.com/wp/wp8664414.jpg"
+          alt="Deena Travels"
+        />
+
+        <div class="hero-content">
+          <div class="container">
+            <small data-aos="fade-up" data-aos-duration="3000">
+              * Our Vehicles
+            </small>
+
+            <h1 class="mt-3" data-aos="fade-up" data-aos-duration="3000">
+              Comfortable & Well-Maintained<br />
+              Vehicles for Every Trip
+            </h1>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="vehicle-showcase">
+      <div class="container">
+        <div class="section-header">
+          <h2 data-aos="zoom-in">Our <span>Vehicle Categories</span></h2>
+          <p data-aos="zoom-in">
+            From comfortable city rides to luxury long-distance travel, Deena
+            Travels offers vehicles to match every travel need.
+          </p>
+        </div>
+
+        <div class="vehicle-cards">
+          <!-- CARD 1 -->
+          <div class="vehicle-item" data-aos="fade-up" data-aos-duration="3000">
+            <img
+              src="https://images4.alphacoders.com/137/1378761.jpg"
+              alt="Sedan"
+            />
+            <div class="vehicle-overlay">
+              <h4>Sedan</h4>
+              <span class="arrow-btn">↗</span>
+            </div>
+          </div>
+
+          <!-- CARD 2 -->
+          <div class="vehicle-item" data-aos="fade-up" data-aos-duration="3000">
+            <img
+              src="https://www.hdcarwallpapers.com/walls/2018_mg_x_motion_suv_concept_4k_2-HD.jpg"
+              alt="SUV"
+            />
+            <div class="vehicle-overlay">
+              <h4>SUV</h4>
+              <span class="arrow-btn">↗</span>
+            </div>
+          </div>
+
+          <!-- CARD 3 -->
+          <div class="vehicle-item" data-aos="fade-up" data-aos-duration="3000">
+            <img
+              src="https://5.imimg.com/data5/FH/VW/MY-30536999/force-traveller-500x500.jpg"
+              alt="Tempo Traveller"
+            />
+            <div class="vehicle-overlay">
+              <h4>Tempo Traveller</h4>
+              <span class="arrow-btn">↗</span>
+            </div>
+          </div>
+
+          <!-- CARD 4 -->
+          <div class="vehicle-item" data-aos="fade-up" data-aos-duration="3000">
+            <img
+              src="https://phoenixsedanandlimo.com/images/blog/buses-for-large-corporate-groups/1.jpg"
+              alt="Luxury Bus"
+            />
+            <div class="vehicle-overlay">
+              <h4>Luxury Bus</h4>
+              <span class="arrow-btn">↗</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="vehicle-benefits-alt">
+  <div class="container">
+
+    <div class="section-header text-center mb-5">
+      <h2 data-aos="zoom-in">
+        Why Choose Our <span>Vehicles</span>
+      </h2>
+      <p data-aos="zoom-in">
+        Designed to deliver comfort, safety and reliability for every journey
+      </p>
+    </div>
+
+    <div class="row g-5">
+
+      <!-- ITEM 1 -->
+      <div class="col-lg-4" data-aos="fade-right">
+        <div class="benefit-row">
+          <div class="benefit-line"></div>
+          <div class="benefit-row-content">
+            <i class="bi bi-shield-check"></i>
+            <h5>Well Maintained Vehicles</h5>
+            <p>
+              All vehicles are regularly serviced, cleaned and safety-checked
+              to ensure smooth and worry-free travel.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 2 -->
+      <div class="col-lg-4" data-aos="fade-up">
+        <div class="benefit-row">
+          <div class="benefit-line"></div>
+          <div class="benefit-row-content">
+            <i class="bi bi-person-check"></i>
+            <h5>Professional Drivers</h5>
+            <p>
+              Courteous, experienced and route-aware drivers focused on
+              punctuality, safety and comfort.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 3 -->
+      <div class="col-lg-4" data-aos="fade-left">
+        <div class="benefit-row">
+          <div class="benefit-line"></div>
+          <div class="benefit-row-content">
+            <i class="bi bi-clock-history"></i>
+            <h5>On-Time Service</h5>
+            <p>
+              Guaranteed timely pickup and drop services to respect
+              your schedule and travel plans.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section class="vehicle-usage-overlay">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2 data-aos="zoom-in">
+        Perfect Vehicles for <span>Every Purpose</span>
+      </h2>
+      <p data-aos="zoom-in">
+        Travel solutions designed for every journey and requirement
+      </p>
+    </div>
+
+    <div class="row g-4 mt-5">
+
+      <!-- CARD 1 -->
+      <div class="col-md-6 col-lg-3" data-aos="fade-up">
+        <div class="usage-overlay-card">
+          <img
+            src="https://cdn.pixabay.com/photo/2021/11/23/23/38/cars-6819875_1280.jpg"
+            alt="Local Travel"
+          />
+          <div class="usage-overlay-content">
+            <h5>Local Travel</h5>
+            <p>Comfortable rides for city travel & daily trips</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="col-md-6 col-lg-3" data-aos="fade-up">
+        <div class="usage-overlay-card">
+          <img
+            src="https://protravels.co.in/wp-content/uploads/2021/09/Services-Outstation-travel-image.jpg"
+            alt="Outstation Trips"
+          />
+          <div class="usage-overlay-content">
+            <h5>Outstation Trips</h5>
+            <p>Safe and smooth long-distance journeys</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="col-md-6 col-lg-3" data-aos="fade-up">
+        <div class="usage-overlay-card">
+          <img
+            src="https://besttrackcalltaxi.com/img/pickup-service.jpg"
+            alt="Airport Travel"
+          />
+          <div class="usage-overlay-content">
+            <h5>Airport Pickup & Drop</h5>
+            <p>On-time service with stress-free travel</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="col-md-6 col-lg-3" data-aos="fade-up">
+        <div class="usage-overlay-card">
+          <img
+            src="https://img.freepik.com/premium-photo/black-cabriolet-is-country-road-happy-group-young-girls-guys-are-sitting-car-hold-their-hands-up-sunny-day_472597-3131.jpg"
+            alt="Corporate Travel"
+          />
+          <div class="usage-overlay-content">
+            <h5>Group & Corporate Travel</h5>
+            <p>Spacious vehicles for teams & group tours</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+    <section class="cta-section" data-aos="fade-up" data-aos-duration="3000">
+      <div class="container">
+        <div class="cta-box">
+          <!-- LEFT CONTENT -->
+          <div class="cta-content">
+            <h2 data-aos="fade-right">Book Your Ride Today<br /></h2>
+
+            <p data-aos="fade-right">
+              Safe, affordable and comfortable travel services with
+              well-maintained A/C & Non A/C vehicles. Enjoy punctual service,
+              experienced drivers and stress-free journeys for local, outstation
+              and airport travel.
+            </p>
+
+            <a href="contact.html" class="cta-btn" data-aos="fade-right">
+              Contact Us <span>↗</span>
+            </a>
+          </div>
+
+          <!-- RIGHT IMAGE -->
+          <div class="cta-image">
+            <img
+              src="https://pngimg.com/uploads/mercedes/mercedes_PNG1896.png"
+              alt="Car"
+              data-aos="fade-left"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <footer class="footer">
+  <div class="container">
+    <div class="row gy-4">
+
+      <!-- ABOUT -->
+      <div class="col-lg-4 col-md-6">
+        <h5 class="footer-title"  data-aos="zoom-in">Deena Travels</h5>
+        <p class="footer-text"  data-aos="zoom-in">
+          Trusted travel partner providing A/C & Non A/C vehicles for
+          local, outstation, airport pickup and group travel.
+        </p>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div class="col-lg-4 col-md-6">
+        <h5 class="footer-title" data-aos="zoom-in">Quick Links</h5>
+        <ul class="footer-links">
+          <li  data-aos="zoom-in"><a href="index.html"><i class="bi bi-chevron-right"></i> Home</a></li>
+          <li  data-aos="zoom-in"><a href="about.html"><i class="bi bi-chevron-right"></i> About Us</a></li>
+          <li  data-aos="zoom-in"><a href="vehicles.html"><i class="bi bi-chevron-right"></i> Vehicles</a></li>
+          <li  data-aos="zoom-in"><a href="contact.html"><i class="bi bi-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="col-lg-4 col-md-6">
+        <h5 class="footer-title"  data-aos="zoom-in">Contact Us</h5>
+
+        <p class="footer-contact"  data-aos="zoom-in">
+          <i class="bi bi-geo-alt-fill"></i>
+          No.19/9, 1st Street, Kannan Colony,<br />
+          Alandur, Chennai – 600016
+        </p>
+
+        <p class="footer-contact"  data-aos="zoom-in">
+          <i class="bi bi-telephone-fill"></i>
+          +91 98824 77703<br />
+          <i class="bi bi-telephone-fill"></i>
+          +91 98847 77032<br />
+          <i class="bi bi-telephone-fill"></i>
+          +91 98847 77034
+        </p>
+
+        <p class="footer-contact"  data-aos="zoom-in">
+          <i class="bi bi-envelope-fill"></i>
+          deenatravels4777@gmail.com
+        </p>
+        <div class="footer-social">
+  <a href="https://wa.me/919884777032" target="_blank" aria-label="WhatsApp"  data-aos="zoom-in">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <a href="tel:+919884777032" aria-label="Call"  data-aos="zoom-in">
+    <i class="bi bi-telephone-fill"></i>
+  </a>
+
+  <a href="#" aria-label="Facebook"  data-aos="zoom-in">
+    <i class="bi bi-facebook"></i>
+  </a>
+
+  <a href="#" aria-label="Instagram"  data-aos="zoom-in">
+    <i class="bi bi-instagram"></i>
+  </a>
+</div>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Deena Travels. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

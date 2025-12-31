@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deena Travels</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <style>
+      :root {
+        --primary: #ff4d00;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+
+        background: #fff;
+      }
+
+      /* ================= NAVBAR ================= */
+      .navbar {
+        padding: 14px 0;
+      }
+
+      .navbar-brand {
+        font-weight: 800;
+        font-size: 1.6rem;
+      }
+
+      .navbar-brand span {
+        color: var(--primary);
+      }
+
+      .nav-link {
+        font-weight: 500;
+        color: #000 !important;
+        margin: 0 10px;
+      }
+
+      .nav-link.active {
+        color: var(--primary) !important;
+      }
+
+      .book-btn {
+        background: var(--primary);
+        color: #fff;
+        padding: 10px 22px;
+        border-radius: 30px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      /* Fix toggler visibility */
+      .navbar-toggler {
+        border: none;
+      }
+      .navbar-toggler-icon {
+        filter: invert(1);
+      }
+
+      /* ================= HERO ================= */
+      .hero-wrap {
+        padding: 15px; /* 🔥 reduced top space */
+      }
+
+      .hero {
+        position: relative;
+        border-radius: 40px;
+        overflow: hidden;
+      }
+
+      .hero img {
+        width: 100%;
+        height: 65vh; /* ✅ changed */
+        object-fit: cover;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        z-index: 1;
+      }
+
+      .hero-content {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero h1 {
+        font-size: clamp(2rem, 4vw, 4rem);
+        font-weight: 800;
+        color: #fff;
+      }
+
+      .hero p {
+        color: #ddd;
+        max-width: 650px;
+      }
+
+      .hero small {
+        color: var(--primary);
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+
+      /* ================= BUTTONS ================= */
+      .hero-btn-primary {
+        background: var(--primary);
+        color: #fff;
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-weight: 600;
+        border: none;
+      }
+
+      .hero-btn-outline {
+        background: #fff;
+        color: #000;
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-weight: 600;
+        border: none;
+      }
+
+      @media (max-width: 991px) {
+        .hero img {
+          height: 65vh; /* keep same */
+        }
+        .hero-content {
+          text-align: center;
+        }
+        .hero p {
+          margin: auto;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero {
+          border-radius: 25px;
+        }
+        .hero img {
+          height: 65vh; /* keep same */
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+  AOS.init({
+    duration: 1200,        // slower animation
+    easing: "ease-in-out", // smooth easing
+    once: true,            // animate only once
+    offset: 120,           // start a bit earlier
+    delay: 100             // slight delay for smoothness
+  });
+</script>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="#" data-aos="zoom-in"><span>DEENA</span>TRAVELS</a>
+
+        <button
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html" data-aos="zoom-in">Home</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="about.html" data-aos="zoom-in">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="services.html" data-aos="zoom-in">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="vehicles.html" data-aos="zoom-in">Vehicles</a></li>
+            <li class="nav-item"><a class="nav-link" href="enquiry.html" data-aos="zoom-in">Enquiry</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html" data-aos="zoom-in">Contact Us</a>
+            </li>
+          </ul>
+
+          <a href="enquiry.html" class="book-btn d-none d-lg-inline-block" data-aos="zoom-in"
+            >Book Your Ride</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero-wrap" style="margin-top: 80px">
+      <div class="hero">
+        <img
+          src="https://www.moteurmag.com/wp-content/uploads/6526bed236145.jpg"
+          alt="Deena Travels"
+        />
+
+        <div class="hero-content">
+          <div class="container">
+            <small data-aos="fade-up"
+     data-aos-duration="3000">* Welcome To Deena Travels</small>
+
+            <h1 class="mt-3" data-aos="fade-up"
+     data-aos-duration="3000">
+              Reliable & Comfortable<br />
+              Travel Anywhere
+            </h1>
+
+            <p class="mt-3" data-aos="fade-up"
+     data-aos-duration="3000">
+              Deena Travels provides A/C & Non A/C luxury vehicles for local,
+              outstation, airport pickup & drop, corporate and family travel.
+              Available 24×7 with professional drivers.
+            </p>
+
+            <div
+              class="d-flex gap-3 mt-4 flex-wrap justify-content-center justify-content-lg-start"
+            >
+              <button class="hero-btn-primary" data-aos="fade-up"
+     data-aos-duration="3000">Book Now</button>
+              <button class="hero-btn-outline" data-aos="fade-up"
+     data-aos-duration="3000">View Services</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="about-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- LEFT IMAGE -->
+          <div class="col-lg-6">
+            <div class="about-images">
+              <img
+                src="https://img.freepik.com/premium-photo/tour-bus-4_975681-249520.jpg?semt=ais_hybrid&w=740&q=80"
+                class="about-img-lg"
+                alt="Deena Travels"
+                data-aos="fade-down-right"
+              />
+
+              <img
+                src="https://stat.overdrive.in/wp-content/odgallery/2020/11/58040_2021_Toyota_innova_crysta_1.jpg"
+                class="about-img-sm"
+                alt="Deena Travels Service"
+                data-aos="fade-down-left"
+              />
+            </div>
+          </div>
+
+          <!-- RIGHT CONTENT -->
+          <div class="col-lg-6">
+            <span class="about-badge" data-aos="fade-left">★ About Us</span>
+
+            <h2 data-aos="fade-left">Your trusted partner in<br />reliable travel services</h2>
+
+            <p style="text-align: justify" data-aos="fade-left">
+              Deena Travels is a professionally managed travel service provider
+              offering A/C and Non A/C luxury vehicles for local travel,
+              outstation trips, airport pickup & drop, corporate travel and
+              family journeys. We are committed to delivering safe, comfortable
+              and affordable transportation solutions across Tamil Nadu and
+              beyond.
+            </p>
+
+            <!-- FEATURE 1 -->
+            <div class="about-feature" data-aos="fade-left">
+              <div class="about-feature-icon" >
+                <i class="bi bi-calendar-check"></i>
+              </div>
+              <div>
+                <h6 class="fw-bold mb-1">Easy Booking Process</h6>
+                <p class="mb-0">
+                  Quick enquiry, transparent pricing and instant confirmation
+                  for a stress-free booking experience.
+                </p>
+              </div>
+            </div>
+
+            <!-- FEATURE 2 -->
+            <div class="about-feature" data-aos="fade-left">
+              <div class="about-feature-icon">
+                <i class="bi bi-car-front"></i>
+              </div>
+              <div>
+                <h6 class="fw-bold mb-1">Convenient Pickup & Drop</h6>
+                <p class="mb-0">
+                  Doorstep pickup, flexible schedules and punctual service
+                  available 24×7.
+                </p>
+              </div>
+            </div>
+
+            <!-- BUTTON -->
+            <a href="contact.html" class="about-btn" data-aos="fade-left">
+              Contact Us <i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services-section">
+      <div class="container">
+        <div class="section-title text-center mb-5">
+          <h2 data-aos="zoom-in">Our <span>Services</span></h2>
+          <p  data-aos="zoom-in">Comfortable, safe & reliable travel solutions</p>
+        </div>
+
+        <div class="row g-4">
+          <!-- SERVICE 1 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up"
+     data-aos-duration="3000">
+            <div class="service-card">
+              <i class="bi bi-geo-alt"></i>
+              <h5>Local Travel</h5>
+              <p>
+                Hassle-free city travel with clean, well-maintained vehicles
+                driven by experienced professionals.
+              </p>
+            </div>
+          </div>
+
+          <!-- SERVICE 2 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up"
+     data-aos-duration="3000">
+            <div class="service-card">
+              <i class="bi bi-airplane"></i>
+              <h5>Airport Pickup & Drop</h5>
+              <p>
+                On-time airport transfers with 24×7 availability and flight
+                tracking for stress-free travel.
+              </p>
+            </div>
+          </div>
+
+          <!-- SERVICE 3 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up"
+     data-aos-duration="3000">
+            <div class="service-card">
+              <i class="bi bi-map"></i>
+              <h5>Outstation Trips</h5>
+              <p>
+                Comfortable long-distance journeys across Tamil Nadu with
+                flexible packages and transparent pricing.
+              </p>
+            </div>
+          </div>
+
+          <!-- SERVICE 4 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up"
+     data-aos-duration="3000">
+            <div class="service-card">
+              <i class="bi bi-people"></i>
+              <h5>Corporate Travel</h5>
+              <p>
+                Reliable transport solutions for offices, meetings, employee
+                pickup & corporate events.
+              </p>
+            </div>
+          </div>
+
+          <!-- SERVICE 5 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up"
+     data-aos-duration="3000">
+            <div class="service-card">
+              <i class="bi bi-car-front"></i>
+              <h5>Luxury & Family Trips</h5>
+              <p>
+                A/C & Non A/C cars, tempo travellers and buses for family
+                outings, weddings & tours.
+              </p>
+            </div>
+          </div>
+
+          <!-- SERVICE 6 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up"
+     data-aos-duration="3000">
+            <div class="service-card">
+              <i class="bi bi-clock-history"></i>
+              <h5>24×7 Travel Support</h5>
+              <p>
+                Round-the-clock customer support ensuring safety, punctuality
+                and complete peace of mind.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features-ui">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <!-- LEFT CONTENT -->
+          <div class="col-lg-6">
+            <div class="features-content">
+              <span class="features-tag"  data-aos="zoom-in">— OUR SERVICES —</span>
+              <h2 style="color: #000;" data-aos="fade-right">Why Choose Deena Travels?</h2>
+              <p class="features-desc"  data-aos="fade-right">
+                Deena Travels offers reliable, comfortable, and affordable
+                travel solutions for every journey. From local trips to
+                long-distance travel, we ensure safety, punctuality, and
+                customer satisfaction.
+              </p>
+
+              <!-- FEATURE ITEM -->
+              <div class="feature-box"  data-aos="fade-right">
+                <div class="feature-icon">
+                  <i class="bi bi-car-front"></i>
+                </div>
+                <div>
+                  <h5>A/C & Non A/C Vehicles</h5>
+                  <p>
+                    Wide range of cars, vans, tempo travellers and buses
+                    available to suit all travel needs and budgets.
+                  </p>
+                </div>
+              </div>
+
+              <!-- FEATURE ITEM -->
+              <div class="feature-box"  data-aos="fade-right">
+                <div class="feature-icon">
+                  <i class="bi bi-clock-history"></i>
+                </div>
+                <div>
+                  <h5>24/7 Service Availability</h5>
+                  <p>
+                    We operate round-the-clock to ensure you have transport
+                    whenever and wherever you need it.
+                  </p>
+                </div>
+              </div>
+
+              <!-- FEATURE ITEM -->
+              <div class="feature-box"  data-aos="fade-right">
+                <div class="feature-icon">
+                  <i class="bi bi-shield-check"></i>
+                </div>
+                <div>
+                  <h5>Affordable & Reliable Travel</h5>
+                  <p>
+                    Transparent pricing, professional drivers, and safe journeys
+                    make Deena Travels your trusted travel partner.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT IMAGE -->
+          <div class="col-lg-6">
+            <div class="features-image" style="margin-top: 180px;">
+              <img
+                src="https://www.pngall.com/wp-content/uploads/5/White-Tourist-Bus-PNG-Picture.png"
+                alt="feature image" 
+                data-aos="fade-left"
+              />
+              <span class="image-bg"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+<section class="how-it-works">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <!-- LEFT IMAGE -->
+      <div class="col-lg-6">
+  <div class="how-image">
+    <span class="image-bg-shape"></span>
+    <img
+      src="https://www.pngall.com/wp-content/uploads/5/Tour-Bus-PNG-File.png"
+      alt="Deena Travels Booking"
+       data-aos="fade-right"
+    />
+  </div>
+</div>
+
+
+      <!-- RIGHT CONTENT -->
+      <div class="col-lg-6">
+        <div class="how-content">
+          <span class="how-tag" data-aos="fade-left">HOW IT WORKS</span>
+          <h2 data-aos="fade-left">Following Working Steps</h2>
+
+          <div class="how-step">
+            <span class="step-number" data-aos="fade-left">01</span>
+            <div>
+              <h5 data-aos="fade-left">Choose A Vehicle</h5>
+              <p data-aos="fade-left">
+                Browse our wide range of A/C & Non A/C vehicles and select
+                the one that fits your travel needs.
+              </p>
+            </div>
+          </div>
+
+          <div class="how-step" >
+            <span class="step-number" data-aos="fade-left">02</span>
+            <div>
+              <h5 data-aos="fade-left">Pick Up Date</h5>
+              <p data-aos="fade-left">
+                Choose your preferred pickup date, time, and location
+                with complete flexibility.
+              </p>
+            </div>
+          </div>
+
+          <div class="how-step">
+            <span class="step-number" data-aos="fade-left">03</span>
+            <div>
+              <h5 data-aos="fade-left">Confirm Your Booking</h5>
+              <p data-aos="fade-left">
+                Verify your booking details and get instant confirmation
+                from our team.
+              </p>
+            </div>
+          </div>
+
+          <div class="how-step">
+            <span class="step-number" data-aos="fade-left">04</span>
+            <div>
+              <h5  data-aos="fade-left">Enjoy Your Journey</h5>
+              <p data-aos="fade-left">
+                Sit back, relax, and enjoy a safe and comfortable journey
+                with Deena Travels.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- <section class="section">
+  <div class="container">
+    <div class="section-title">
+      <h2>Our <span>Vehicles</span></h2>
+      <p class="text-muted mt-2">
+        Deena Travels offers a wide range of well-maintained A/C and Non A/C
+        vehicles to suit every travel requirement — from solo trips to group
+        tours.
+      </p>
+    </div>
+
+    <div class="row g-4">
+
+      <div class="col-md-4 vehicle-card">
+        <img src="https://www.pngplay.com/wp-content/uploads/13/Sedan-PNG-Photos.png"  class="mt-5"/>
+        <h5 style="margin-top: 110px;">Sedan</h5>
+        <p class="vehicle-desc ">
+          Ideal for city rides, airport transfers, and business travel.
+          Comfortable seating with smooth ride experience.
+        </p>
+      </div>
+
+      <div class="col-md-4 vehicle-card">
+        <img src="https://png.pngtree.com/png-clipart/20250106/original/pngtree-red-suv-car-front-view-png-image_19762951.png" />
+        <h5>SUV</h5>
+        <p class="vehicle-desc">
+          Spacious and powerful vehicles suitable for family trips,
+          outstation journeys, and long-distance travel.
+        </p>
+      </div>
+
+      <div class="col-md-4 vehicle-card">
+        <img src="https://indiatourbycaranddriver.com/wp-content/uploads/2024/05/rent-tempo-traveller-20-seater-for-hire.webp" />
+        <h5>Tempo Traveller</h5>
+        <p class="vehicle-desc">
+          Perfect for group tours, office trips, and pilgrimage travel
+          with ample seating and luggage space.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section> -->
+<section class="vehicle-showcase">
+  <div class="container">
+
+    <div class="section-header">
+      <h2  data-aos="zoom-in">Our <span>Vehicle Categories</span></h2>
+      <p  data-aos="zoom-in">
+        From comfortable city rides to luxury long-distance travel,
+        Deena Travels offers vehicles to match every travel need.
+      </p>
+    </div>
+
+    <div class="vehicle-cards">
+
+      <!-- CARD 1 -->
+      <div class="vehicle-item" data-aos="fade-up"
+     data-aos-duration="3000">
+        <img src="https://images4.alphacoders.com/137/1378761.jpg" alt="Sedan">
+        <div class="vehicle-overlay">
+          <h4>Sedan</h4>
+          <span class="arrow-btn">↗</span>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="vehicle-item" data-aos="fade-up"
+     data-aos-duration="3000">
+        <img src="https://www.hdcarwallpapers.com/walls/2018_mg_x_motion_suv_concept_4k_2-HD.jpg" alt="SUV">
+        <div class="vehicle-overlay">
+          <h4>SUV</h4>
+          <span class="arrow-btn">↗</span>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="vehicle-item" data-aos="fade-up"
+     data-aos-duration="3000">
+        <img src="https://5.imimg.com/data5/FH/VW/MY-30536999/force-traveller-500x500.jpg" alt="Tempo Traveller">
+        <div class="vehicle-overlay">
+          <h4>Tempo Traveller</h4>
+          <span class="arrow-btn">↗</span>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="vehicle-item" data-aos="fade-up"
+     data-aos-duration="3000">
+        <img src="https://phoenixsedanandlimo.com/images/blog/buses-for-large-corporate-groups/1.jpg" alt="Luxury Bus">
+        <div class="vehicle-overlay">
+          <h4>Luxury Bus</h4>
+          <span class="arrow-btn">↗</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="testimonials-header">
+      <h2  data-aos="zoom-in">What Our <span>Customers Say</span></h2>
+      <p  data-aos="zoom-in">Trusted reviews from customers who travelled with Deena Travels</p>
+    </div>
+
+    <!-- GRID -->
+    <div class="testimonials-grid">
+
+      <!-- CARD 1 -->
+      <div class="testimonial-card" data-aos="fade-up"
+     data-aos-duration="3000">
+        <div style="color: #ff4d00;">★★★★★</div>
+
+        <div class="card-body">
+          <p class="testimonial-text">
+            Excellent service! Clean vehicle and professional driver.
+            Highly recommended for family trips.
+          </p>
+
+          <div class="testimonial-user" >
+            <img src="https://images.rawpixel.com/light_image_png_1300/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzNy1hZXctMTM5LnBuZw.png" alt="">
+            <div>
+              <h5>Name</h5>
+              <span>Chennai</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="testimonial-card" data-aos="fade-up"
+     data-aos-duration="3000">
+        <div style="color: #ff4d00;">★★★★☆</div>
+
+        <div class="card-body">
+          <p class="testimonial-text">
+            On-time airport pickup and smooth journey.
+            Very reliable and affordable service.
+          </p>
+
+          <div class="testimonial-user">
+            <img src="https://images.rawpixel.com/light_image_png_1300/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzNy1hZXctMTM5LnBuZw.png" alt="">
+            <div>
+              <h5>Name</h5>
+              <span>Airport Transfer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="testimonial-card" data-aos="fade-up"
+     data-aos-duration="3000">
+        <div style="color: #ff4d00;">★★★★★</div>
+
+        <div class="card-body">
+          <p class="testimonial-text">
+            Booked a Tempo Traveller for our temple tour.
+            Comfortable ride and excellent coordination.
+          </p>
+
+          <div class="testimonial-user">
+            <img src="https://images.rawpixel.com/light_image_png_1300/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzNy1hZXctMTM5LnBuZw.png" alt="">
+            <div>
+              <h5>Name</h5>
+              <span>Group Travel</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="faq-section">
+     <div class="stars"></div>
+  <div class="stars2"></div>
+  <div class="stars3"></div>
+  <div class="container">
+
+    <div class="faq-header">
+      <h2 class="text-white"   data-aos="zoom-in">Frequently Asked <span>Questions</span></h2>
+      <p class="text-white"  data-aos="zoom-in">
+        Find answers to common questions about Deena Travels services,
+        vehicle booking, and travel support.
+      </p>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item"  data-aos="fade-right">
+        <button class="faq-question">
+          What types of vehicles does Deena Travels offer?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>
+            We offer a wide range of A/C and Non A/C vehicles including
+            Sedan, SUV, Tempo Traveller, and Luxury Buses for all travel needs.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item"  data-aos="fade-right">
+        <button class="faq-question">
+          Do you provide airport pickup and drop services?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>
+            Yes, Deena Travels provides reliable airport pickup and drop
+            services with punctual and professional drivers.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item"  data-aos="fade-right">
+        <button class="faq-question">
+          How can I book a vehicle?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>
+            You can book a vehicle by calling us directly, sending a WhatsApp
+            message, or filling out the enquiry form on our website.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item"  data-aos="fade-right">
+        <button class="faq-question">
+          Are your services available 24/7?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>
+            Yes, our travel services are available 24/7 to ensure flexible
+            and convenient travel for our customers.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+<script>
+  document.querySelectorAll(".faq-question").forEach(button => {
+    button.addEventListener("click", () => {
+      const item = button.parentElement;
+      item.classList.toggle("active");
+    });
+  });
+</script>
+
+    <section class="cta mb-5 mt-5">
+      <div class="container mt-4">
+        <h2  data-aos="zoom-in">Book Your Ride Today</h2>
+        <p class="mb-4"  data-aos="zoom-in">Safe, affordable & comfortable travel</p>
+        <a href="enquiry.html"  data-aos="zoom-in">Enquire Now</a>
+      </div>
+    </section>
+ <footer class="footer">
+  <div class="container">
+    <div class="row gy-4">
+
+      <!-- ABOUT -->
+      <div class="col-lg-4 col-md-6">
+        <h5 class="footer-title"  data-aos="zoom-in">Deena Travels</h5>
+        <p class="footer-text"  data-aos="zoom-in">
+          Trusted travel partner providing A/C & Non A/C vehicles for
+          local, outstation, airport pickup and group travel.
+        </p>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div class="col-lg-4 col-md-6">
+        <h5 class="footer-title" data-aos="zoom-in">Quick Links</h5>
+        <ul class="footer-links">
+          <li  data-aos="zoom-in"><a href="index.html"><i class="bi bi-chevron-right"></i> Home</a></li>
+          <li  data-aos="zoom-in"><a href="about.html"><i class="bi bi-chevron-right"></i> About Us</a></li>
+          <li  data-aos="zoom-in"><a href="vehicles.html"><i class="bi bi-chevron-right"></i> Vehicles</a></li>
+          <li  data-aos="zoom-in"><a href="contact.html"><i class="bi bi-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="col-lg-4 col-md-6">
+        <h5 class="footer-title"  data-aos="zoom-in">Contact Us</h5>
+
+        <p class="footer-contact"  data-aos="zoom-in">
+          <i class="bi bi-geo-alt-fill"></i>
+          No.19/9, 1st Street, Kannan Colony,<br />
+          Alandur, Chennai – 600016
+        </p>
+
+        <p class="footer-contact"  data-aos="zoom-in">
+          <i class="bi bi-telephone-fill"></i>
+          +91 98824 77703<br />
+          <i class="bi bi-telephone-fill"></i>
+          +91 98847 77032<br />
+          <i class="bi bi-telephone-fill"></i>
+          +91 98847 77034
+        </p>
+
+        <p class="footer-contact"  data-aos="zoom-in">
+          <i class="bi bi-envelope-fill"></i>
+          deenatravels4777@gmail.com
+        </p>
+        <div class="footer-social">
+  <a href="https://wa.me/919884777032" target="_blank" aria-label="WhatsApp"  data-aos="zoom-in">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <a href="tel:+919884777032" aria-label="Call"  data-aos="zoom-in">
+    <i class="bi bi-telephone-fill"></i>
+  </a>
+
+  <a href="#" aria-label="Facebook"  data-aos="zoom-in">
+    <i class="bi bi-facebook"></i>
+  </a>
+
+  <a href="#" aria-label="Instagram"  data-aos="zoom-in">
+    <i class="bi bi-instagram"></i>
+  </a>
+</div>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Deena Travels. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

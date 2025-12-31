@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deena Travels</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+
+    <style>
+      :root {
+        --primary: #ff4d00;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+
+        background: #fff;
+      }
+
+      /* ================= NAVBAR ================= */
+      .navbar {
+        padding: 14px 0;
+      }
+
+      .navbar-brand {
+        font-weight: 800;
+        font-size: 1.6rem;
+      }
+
+      .navbar-brand span {
+        color: var(--primary);
+      }
+
+      .nav-link {
+        font-weight: 500;
+        color: #000 !important;
+        margin: 0 10px;
+      }
+
+      .nav-link.active {
+        color: var(--primary) !important;
+      }
+
+      .book-btn {
+        background: var(--primary);
+        color: #fff;
+        padding: 10px 22px;
+        border-radius: 30px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      /* Fix toggler visibility */
+      .navbar-toggler {
+        border: none;
+      }
+      .navbar-toggler-icon {
+        filter: invert(1);
+      }
+
+      /* ================= HERO ================= */
+      .hero-wrap {
+        padding: 15px; /* 🔥 reduced top space */
+      }
+
+      .hero {
+        position: relative;
+        border-radius: 40px;
+        overflow: hidden;
+      }
+
+      .hero img {
+        width: 100%;
+        height: 65vh; /* ✅ changed */
+        object-fit: cover;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        z-index: 1;
+      }
+
+      .hero-content {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero h1 {
+        font-size: clamp(2rem, 4vw, 4rem);
+        font-weight: 800;
+        color: #fff;
+      }
+
+      .hero p {
+        color: #ddd;
+        max-width: 650px;
+      }
+
+      .hero small {
+        color: var(--primary);
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+
+      /* ================= BUTTONS ================= */
+      .hero-btn-primary {
+        background: var(--primary);
+        color: #fff;
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-weight: 600;
+        border: none;
+      }
+
+      .hero-btn-outline {
+        background: #fff;
+        color: #000;
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-weight: 600;
+        border: none;
+      }
+
+      @media (max-width: 991px) {
+        .hero img {
+          height: 65vh; /* keep same */
+        }
+        .hero-content {
+          text-align: center;
+        }
+        .hero p {
+          margin: auto;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero {
+          border-radius: 25px;
+        }
+        .hero img {
+          height: 65vh; /* keep same */
+        }
+      }
+
+
+/* ================= CTA SECTION ================= */
+.cta-section {
+  padding: 80px 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.cta-box {
+  background: #000;
+  border-radius: 40px;
+  padding: 70px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+/* GRID BACKGROUND */
+.cta-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+}
+
+/* CONTENT */
+.cta-content {
+  max-width: 520px;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-content h2 {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.cta-content p {
+  color: #ccc;
+  margin-bottom: 30px;
+  line-height: 1.7;
+}
+
+/* BUTTON */
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #ff4d00;
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.cta-btn span {
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  color: #ff4d00;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(255,77,0,0.4);
+}
+
+/* IMAGE */
+.cta-image {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-image img {
+  max-width: 480px;
+  width: 100%;
+  filter: drop-shadow(0 30px 50px rgba(0,0,0,0.6));
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .cta-box {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 30px;
+  }
+
+  .cta-content {
+    max-width: 100%;
+  }
+
+  .cta-image img {
+    margin-top: 40px;
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 576px) {
+  .cta-box {
+    border-radius: 25px;
+  }
+}
+
+.core-values {
+  padding: 100px 0;
+  background: #f9fafb;
+}
+
+.value-card {
+  background: #fff;
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 24px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.08);
+  transition: 0.4s;
+}
+
+.value-card i {
+  font-size: 34px;
+  color: #ff4d00;
+  margin-bottom: 12px;
+}
+
+.value-card h6 {
+  font-weight: 700;
+}
+
+.value-card:hover {
+  transform: translateY(-10px);
+}
+.mission-vision {
+  padding: 100px 0;
+  background: #fff;
+}
+
+.mv-card {
+  background: linear-gradient(135deg, #ff4d00, #ff7a3d);
+  color: #fff;
+  padding: 50px 40px;
+  border-radius: 30px;
+  height: 100%;
+  position: relative;
+}
+
+.mv-card i {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.mv-card h4 {
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.mv-card p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+/* ================= TRUST HERO ================= */
+.trust-hero {
+  padding: 0;
+  background: #0f0f0f;
+}
+
+.trust-hero-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  min-height: 620px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+/* LEFT */
+.trust-left {
+  padding: 80px 70px;
+  color: #fff;
+  background: radial-gradient(
+    circle at top left,
+    #1a1a1a,
+    #0f0f0f 70%
+  );
+}
+
+.trust-tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.08);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.trust-left h2 {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.trust-left h2 span {
+  color: #ff4d00;
+}
+
+/* POINTS */
+.trust-points {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 25px;
+  margin: 30px 0;
+  font-size: 15px;
+}
+
+.trust-points div {
+  color: #ddd;
+}
+
+/* DESC */
+.trust-desc {
+  max-width: 480px;
+  font-size: 15px;
+  color: #bbb;
+  line-height: 1.7;
+  margin-bottom: 35px;
+}
+
+/* BUTTON */
+.trust-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 28px;
+  border-radius: 30px;
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.trust-btn span {
+  background: #ff4d00;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trust-btn:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+/* RIGHT IMAGE */
+.trust-right {
+  height: 100%;
+}
+
+.trust-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* RESPONSIVE */
+@media (max-width: 991px) {
+  .trust-hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .trust-left {
+    padding: 60px 30px;
+  }
+
+  .trust-points {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+    </style>
+  </head>
+
+  <body>
+     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+  AOS.init({
+    duration: 1200,        // slower animation
+    easing: "ease-in-out", // smooth easing
+    once: true,            // animate only once
+    offset: 120,           // start a bit earlier
+    delay: 100             // slight delay for smoothness
+  });
+</script>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="#" data-aos="zoom-in"><span>DEENA</span>TRAVELS</a>
+
+        <button
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#nav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link " href="index.html" data-aos="zoom-in">Home</a>
+            </li>
+            <li class="nav-item"><a class="nav-link active" href="about.html" data-aos="zoom-in">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="services.html" data-aos="zoom-in">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="vehicles.html" data-aos="zoom-in">Vehicles</a></li>
+            <li class="nav-item"><a class="nav-link" href="enquiry.html" data-aos="zoom-in">Enquiry</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html" data-aos="zoom-in">Contact Us</a>
+            </li>
+          </ul>
+
+          <a href="enquiry.html" class="book-btn d-none d-lg-inline-block" data-aos="zoom-in"
+            >Book Your Ride</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero-wrap" style="margin-top: 80px">
+      <div class="hero">
+        <img
+          src="https://wallpapercave.com/wp/wp9028980.jpg"
+          alt="Deena Travels"
+        />
+
+        <div class="hero-content">
+          <div class="container">
+    <small data-aos="fade-up"
+     data-aos-duration="3000">* About Deena Travels</small>
+
+           <h1 class="mt-3" data-aos="fade-up"
+     data-aos-duration="3000">
+      Your Trusted Travel<br />
+      Partner in Tamil Nadu
+    </h1>
+
+          
+           
+          </div>
+        </div>
+      </div>
+    </div>
+     <section class="about-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- LEFT IMAGE -->
+          <div class="col-lg-6">
+            <div class="about-images">
+              <img
+                src="https://img.freepik.com/premium-photo/tour-bus-4_975681-249520.jpg?semt=ais_hybrid&w=740&q=80"
+                class="about-img-lg"
+                alt="Deena Travels"
+                data-aos="fade-down-right"
+              />
+
+              <img
+                src="https://stat.overdrive.in/wp-content/odgallery/2020/11/58040_2021_Toyota_innova_crysta_1.jpg"
+                class="about-img-sm"
+                alt="Deena Travels Service"
+                data-aos="fade-down-left"
+              />
+            </div>
+          </div>
+
+          <!-- RIGHT CONTENT -->
+          <div class="col-lg-6">
+            <span class="about-badge" data-aos="fade-left">★ About Us</span>
+
+            <h2 data-aos="fade-left">Your trusted partner in<br />reliable travel services</h2>
+
+            <p style="text-align: justify" data-aos="fade-left">
+              Deena Travels is a professionally managed travel service provider
+              offering A/C and Non A/C luxury vehicles for local travel,
+              outstation trips, airport pickup & drop, corporate travel and
+              family journeys. We are committed to delivering safe, comfortable
+              and affordable transportation solutions across Tamil Nadu and
+              beyond.
+            </p>
+
+            <!-- FEATURE 1 -->
+            <div class="about-feature" data-aos="fade-left">
+              <div class="about-feature-icon" >
+                <i class="bi bi-calendar-check"></i>
+              </div>
+              <div>
+                <h6 class="fw-bold mb-1">Easy Booking Process</h6>
+                <p class="mb-0">
+                  Quick enquiry, transparent pricing and instant confirmation
+                  for a stress-free booking experience.
+                </p>
+              </div>
+            </div>
+
+            <!-- FEATURE 2 -->
+            <div class="about-feature" data-aos="fade-left">
+              <div class="about-feature-icon">
+                <i class="bi bi-car-front"></i>
+              </div>
+              <div>
+                <h6 class="fw-bold mb-1">Convenient Pickup & Drop</h6>
+                <p class="mb-0">
+                  Doorstep pickup, flexible schedules and punctual service
+                  available 24×7.
+                </p>
+              </div>
+            </div>
+
+            <!-- BUTTON -->
+            <a href="contact.html" class="about-btn" data-aos="fade-left">
+              Contact Us <i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="mission-vision">
+  <div class="container">
+    <div class="row g-4">
+
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="mv-card">
+          <i class="bi bi-bullseye"></i>
+          <h4>Our Mission</h4>
+          <p>
+            To deliver safe, comfortable and affordable travel solutions
+            by providing well-maintained vehicles, professional drivers
+            and exceptional customer service across Tamil Nadu.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="mv-card">
+          <i class="bi bi-eye"></i>
+          <h4>Our Vision</h4>
+          <p>
+            To become a trusted and leading travel service provider known
+            for reliability, transparency and customer satisfaction.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="core-values">
+  <div class="container">
+    <div class="section-title text-center mb-5">
+      <h2 data-aos="zoom-in">Our <span>Core Values</span></h2>
+      <p data-aos="zoom-in">What drives Deena Travels every day</p>
+    </div>
+
+    <div class="row g-4">
+
+      <div class="col-md-6 col-lg-3" data-aos="fade-up">
+        <div class="value-card">
+          <i class="bi bi-shield-lock"></i>
+          <h6>Safety First</h6>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3" data-aos="fade-up">
+        <div class="value-card">
+          <i class="bi bi-clock-history"></i>
+          <h6>Punctuality</h6>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3" data-aos="fade-up">
+        <div class="value-card">
+          <i class="bi bi-hand-thumbs-up"></i>
+          <h6>Reliability</h6>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-3" data-aos="fade-up">
+        <div class="value-card">
+          <i class="bi bi-people"></i>
+          <h6>Customer Care</h6>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+ <section class="trust-hero">
+  <div class="trust-hero-inner">
+
+    <!-- LEFT CONTENT -->
+    <div class="trust-left">
+      <span class="trust-tag" data-aos="fade-right">★ Trusted Since Day One</span>
+
+      <h2 data-aos="fade-right">
+        Why Customers<br />
+        <span>Trust Deena Travels</span>
+      </h2>
+
+      <div class="trust-points">
+        <div data-aos="fade-right">✔ Clean & Well-Maintained Vehicles</div>
+        <div data-aos="fade-right">✔ Verified & Experienced Drivers</div>
+        <div data-aos="fade-right">✔ Transparent & Fair Pricing</div>
+        <div data-aos="fade-right">✔ On-Time Pickup & Drop</div>
+        <div data-aos="fade-right">✔ 24×7 Customer Support</div>
+      </div>
+
+      <p class="trust-desc" data-aos="fade-right">
+        From local city travel to long-distance journeys, Deena Travels is
+        committed to delivering safe, comfortable and reliable transportation
+        solutions across Tamil Nadu.
+      </p>
+
+      <a href="contact.html" class="trust-btn" data-aos="fade-right">
+        Know More <span>↗</span>
+      </a>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="trust-right">
+      <img
+        src="https://images.unsplash.com/photo-1542362567-b07e54358753"
+        alt="Deena Travels" data-aos="fade-left"
+      />
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<section class="cta-section" data-aos="fade-up"
+     data-aos-duration="3000">
+  <div class="container">
+    <div class="cta-box">
+
+      <!-- LEFT CONTENT -->
+      <div class="cta-content">
+        <h2  data-aos="fade-right">
+          Book Your Ride Today<br />
+         
+        </h2>
+
+        <p  data-aos="fade-right">
+          Safe, affordable and comfortable travel services with well-maintained
+  A/C & Non A/C vehicles. Enjoy punctual service, experienced drivers
+  and stress-free journeys for local, outstation and airport travel.
+        </p>
+
+        <a href="#contact" class="cta-btn"  data-aos="fade-right">
+          Contact Us <span>↗</span>
+        </a>
+      </div>
+
+      <!-- RIGHT IMAGE -->
+      <div class="cta-image">
+        <img
+          src="https://pngimg.com/uploads/mercedes/mercedes_PNG1896.png"
+          alt="Car"
+          data-aos="fade-left"
+        />
+      </div>
+
+    </div>
+  </div>
+</section>
+
+ <footer class="footer">
+  <div class="container">
+    <div class="row gy-4">
+
+      <!-- ABOUT -->
+      <div class="col-lg-4 col-md-6">
+        <h5 class="footer-title"  data-aos="zoom-in">Deena Travels</h5>
+        <p class="footer-text"  data-aos="zoom-in">
+          Trusted travel partner providing A/C & Non A/C vehicles for
+          local, outstation, airport pickup and group travel.
+        </p>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div class="col-lg-4 col-md-6">
+        <h5 class="footer-title" data-aos="zoom-in">Quick Links</h5>
+        <ul class="footer-links">
+          <li  data-aos="zoom-in"><a href="index.html"><i class="bi bi-chevron-right"></i> Home</a></li>
+          <li  data-aos="zoom-in"><a href="about.html"><i class="bi bi-chevron-right"></i> About Us</a></li>
+          <li  data-aos="zoom-in"><a href="vehicles.html"><i class="bi bi-chevron-right"></i> Vehicles</a></li>
+          <li  data-aos="zoom-in"><a href="contact.html"><i class="bi bi-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="col-lg-4 col-md-6">
+        <h5 class="footer-title"  data-aos="zoom-in">Contact Us</h5>
+
+        <p class="footer-contact"  data-aos="zoom-in">
+          <i class="bi bi-geo-alt-fill"></i>
+          No.19/9, 1st Street, Kannan Colony,<br />
+          Alandur, Chennai – 600016
+        </p>
+
+        <p class="footer-contact"  data-aos="zoom-in">
+          <i class="bi bi-telephone-fill"></i>
+          +91 98824 77703<br />
+          <i class="bi bi-telephone-fill"></i>
+          +91 98847 77032<br />
+          <i class="bi bi-telephone-fill"></i>
+          +91 98847 77034
+        </p>
+
+        <p class="footer-contact"  data-aos="zoom-in">
+          <i class="bi bi-envelope-fill"></i>
+          deenatravels4777@gmail.com
+        </p>
+        <div class="footer-social">
+  <a href="https://wa.me/919884777032" target="_blank" aria-label="WhatsApp"  data-aos="zoom-in">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <a href="tel:+919884777032" aria-label="Call"  data-aos="zoom-in">
+    <i class="bi bi-telephone-fill"></i>
+  </a>
+
+  <a href="#" aria-label="Facebook"  data-aos="zoom-in">
+    <i class="bi bi-facebook"></i>
+  </a>
+
+  <a href="#" aria-label="Instagram"  data-aos="zoom-in">
+    <i class="bi bi-instagram"></i>
+  </a>
+</div>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Deena Travels. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
